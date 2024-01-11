@@ -3,9 +3,17 @@ import tkinter as tk
 from tkinter import filedialog, messagebox
 import pandas as pd
 from PIL import Image, ImageDraw, ImageFont
-import os
+import os, sys
 
 # Function definitions (including the provided add_scale_bar function) go here
+
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
+
+csv_path = resource_path('scale_info.csv')
+
 
 # Function to read and process the scale_info.csv file
 def read_scale_info(csv_path):
